@@ -1,4 +1,4 @@
-package iHubAntonioGoncalves.Demo;
+package i.ub.antonio.goncalves.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

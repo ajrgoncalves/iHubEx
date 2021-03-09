@@ -1,9 +1,7 @@
-package iHubAntonioGoncalves.Demo.models;
+package i.ub.antonio.goncalves.demo.models;
 
 import lombok.*;
-
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +11,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name="orderModel")
+//Next Annotation allow to just show Orders delected = false on findAll method
+//@Where(clause = "deleted = false")
 public class OrderModel {
 
     @Id
@@ -26,5 +27,7 @@ public class OrderModel {
     private String buyerEmail;
 
     private Date creationDate;
+
+    private Boolean deleted;
 
 }

@@ -1,10 +1,7 @@
-package iHubAntonioGoncalves.Demo.repositories;
+package i.ub.antonio.goncalves.demo.repositories;
 
-import iHubAntonioGoncalves.Demo.models.OrderModel;
-import iHubAntonioGoncalves.Demo.models.Product;
+import i.ub.antonio.goncalves.demo.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
     //TODO: Need to implement others

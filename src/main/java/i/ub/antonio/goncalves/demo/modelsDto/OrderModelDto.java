@@ -1,4 +1,4 @@
-package iHubAntonioGoncalves.Demo.modelsDto;
+package i.ub.antonio.goncalves.demo.modelsDto;
 
 import lombok.*;
 
@@ -21,4 +21,6 @@ public class OrderModelDto {
     private String buyerEmail;
 
     private Date creationDate;
+
+    private Boolean deleted;
 }

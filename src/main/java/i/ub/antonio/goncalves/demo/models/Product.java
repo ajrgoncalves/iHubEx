@@ -1,4 +1,4 @@
-package iHubAntonioGoncalves.Demo.models;
+package i.ub.antonio.goncalves.demo.models;
 
 import lombok.*;
 

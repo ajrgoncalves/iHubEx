@@ -1,4 +1,4 @@
-package iHubAntonioGoncalves.Demo;
+package i.ub.antonio.goncalves.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
