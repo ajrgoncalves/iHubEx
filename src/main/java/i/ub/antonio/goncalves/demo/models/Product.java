@@ -3,6 +3,7 @@ package i.ub.antonio.goncalves.demo.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Builder
@@ -15,16 +16,17 @@ public class Product {
 
     @Id
     @GeneratedValue
-//    @Column(name = "id")
     private Long id;
 
     private String name;
 
     private Integer price;
 
-    private String creationDate;
+    private Date creationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderModel_id")
     private OrderModel orderModel;
+
+    private Boolean deleted;
 }

@@ -5,6 +5,7 @@ import i.ub.antonio.goncalves.demo.repositories.OrderRepository;
 import i.ub.antonio.goncalves.demo.models.OrderModel;
 import i.ub.antonio.goncalves.demo.modelsDto.OrderModelDto;
 import javassist.NotFoundException;
+import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,11 @@ public class OrderService {
     public List<OrderModelDto> getAllOrdersActive(){
         return orderRepository.findByDeleted(false).stream()
                 .map(order -> orderMapper.mapperToDto(order) ).collect(Collectors.toList());
+    }
+
+    public OrderModel getOrderModelById(Long id) throws NotFoundException{
+        return orderRepository.findById(id)
+                .orElseThrow(() -> new org.webjars.NotFoundException("Order not found for id: %d" + id));
     }
 
 

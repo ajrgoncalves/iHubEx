@@ -2,6 +2,8 @@ package i.ub.antonio.goncalves.demo.modelsDto;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Builder
 @Getter
 @Setter
@@ -16,7 +18,9 @@ public class ProductDto {
 
     private Integer price;
 
-    private String creationDate;
+    private Date creationDate;
 
     private Long orderModelId;
+
+    private Boolean deleted;
 }

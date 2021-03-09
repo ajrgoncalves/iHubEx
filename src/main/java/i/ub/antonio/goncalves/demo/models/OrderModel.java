@@ -18,10 +18,10 @@ public class OrderModel {
 
     @Id
     @GeneratedValue
-//    @Column(name = "id")
+    @Column(name = "id")
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "orderModel")
     private List<Product> products;
 
     private String buyerEmail;
