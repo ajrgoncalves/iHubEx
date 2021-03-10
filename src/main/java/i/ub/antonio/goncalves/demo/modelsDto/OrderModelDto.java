@@ -23,7 +23,9 @@ public class OrderModelDto {
 
     private Date creationDate;
 
-    private Boolean deleted;
+    private Boolean active;
 
     private List<ProductDto> productsDtos;
+
+    private Integer totalPrice;
 }

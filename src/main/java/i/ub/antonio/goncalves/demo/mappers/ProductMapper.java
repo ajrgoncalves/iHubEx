@@ -1,6 +1,5 @@
 package i.ub.antonio.goncalves.demo.mappers;
 
-import i.ub.antonio.goncalves.demo.models.OrderModel;
 import i.ub.antonio.goncalves.demo.models.Product;
 import i.ub.antonio.goncalves.demo.modelsDto.ProductDto;
 import org.springframework.stereotype.Component;
@@ -13,7 +12,7 @@ public class ProductMapper {
                 .id(product.getId())
                 .creationDate(product.getCreationDate())
                 .name(product.getName())
-                .deleted(product.getDeleted())
+                .active(product.getActive())
                 .price(product.getPrice())
                 .build();
     }
@@ -23,7 +22,7 @@ public class ProductMapper {
                 .id(productDto.getId())
                 .creationDate(productDto.getCreationDate())
                 .name(productDto.getName())
-                .deleted(productDto.getDeleted())
+                .active(productDto.getActive())
                 .price(productDto.getPrice())
                 .build();
     }

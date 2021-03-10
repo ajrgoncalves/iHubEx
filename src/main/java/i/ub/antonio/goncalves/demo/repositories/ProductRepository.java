@@ -9,6 +9,6 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Long> {
     //TODO: Need to implement others
     //List<Product> findByOrderModel(OrderModel orderModel);
-    List<Product> findByDeleted(Boolean isDeleted);
+    List<Product> findByActive(Boolean isDeleted);
 
 }

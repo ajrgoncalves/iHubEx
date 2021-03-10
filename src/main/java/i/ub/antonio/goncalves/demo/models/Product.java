@@ -15,6 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@EqualsAndHashCode
 public class Product {
 
     @Id
@@ -30,5 +31,5 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private Set<OrderModel> orders = new HashSet<>();
 
-    private Boolean deleted;
+    private Boolean active;
 }

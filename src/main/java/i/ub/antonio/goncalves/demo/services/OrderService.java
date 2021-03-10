@@ -1,21 +1,16 @@
 package i.ub.antonio.goncalves.demo.services;
 
 import i.ub.antonio.goncalves.demo.mappers.OrderMapper;
-import i.ub.antonio.goncalves.demo.mappers.ProductMapper;
-import i.ub.antonio.goncalves.demo.models.Product;
-import i.ub.antonio.goncalves.demo.modelsDto.CreateOrderModelDto;
-import i.ub.antonio.goncalves.demo.modelsDto.ProductDto;
-import i.ub.antonio.goncalves.demo.repositories.OrderRepository;
 import i.ub.antonio.goncalves.demo.models.OrderModel;
+import i.ub.antonio.goncalves.demo.modelsDto.CreateOrderModelDto;
 import i.ub.antonio.goncalves.demo.modelsDto.OrderModelDto;
+import i.ub.antonio.goncalves.demo.repositories.OrderRepository;
 import i.ub.antonio.goncalves.demo.repositories.ProductRepository;
 import javassist.NotFoundException;
-import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,13 +20,7 @@ public class OrderService {
     OrderRepository orderRepository;
 
     @Autowired
-    ProductService productService;
-
-    @Autowired
     OrderMapper orderMapper;
-
-    @Autowired
-    ProductMapper productMapper;
 
     @Autowired
     ProductRepository productRepository;
@@ -42,12 +31,12 @@ public class OrderService {
     }
 
     public List<OrderModelDto> getAllOrdersDeleted() {
-        return orderRepository.findByDeleted(true).stream()
+        return orderRepository.findByActive(false).stream()
                 .map(order -> orderMapper.mapperToDto(order)).collect(Collectors.toList());
     }
 
     public List<OrderModelDto> getAllOrdersActive() {
-        return orderRepository.findByDeleted(false).stream()
+        return orderRepository.findByActive(true).stream()
                 .map(order -> orderMapper.mapperToDto(order)).collect(Collectors.toList());
     }
 
@@ -61,8 +50,9 @@ public class OrderService {
 
         OrderModel orderModel = orderMapper.mapperFromDtoCreate(createOrderModelDto);
 
-        createOrderModelDto.getProductIds().forEach(productId ->orderModel.getProducts().add(productRepository.findById(productId).orElseThrow(
-                () -> new org.webjars.NotFoundException("An error occurred when adding product to order")
+        createOrderModelDto.getProductIds().forEach(productId ->orderModel.getProducts()
+                .add(productRepository.findById(productId)
+                        .orElseThrow(() -> new org.webjars.NotFoundException("An error occurred when adding product to order")
         )));
 
         orderRepository.save(orderModel);
@@ -71,15 +61,17 @@ public class OrderService {
     }
 
     public void delete(Long id) throws NotFoundException {
-        OrderModel orderModel = orderRepository.findById(id).get();
-        orderModel.setDeleted(true);
+        OrderModel orderModel = orderRepository.findById(id)
+                .orElseThrow(() -> new org.webjars.NotFoundException("Order not found for id: %d" + id));
+        orderModel.setActive(true);
         orderRepository.save(orderModel);
 //        orderRepository.deleteById(id);
     }
 
     public void recover(Long id) throws NotFoundException {
-        OrderModel orderModel = orderRepository.findById(id).get();
-        orderModel.setDeleted(false);
+        OrderModel orderModel = orderRepository.findById(id)
+                .orElseThrow(() -> new org.webjars.NotFoundException("Order not found for id: %d" + id));
+        orderModel.setActive(false);
         orderRepository.save(orderModel);
     }
 }

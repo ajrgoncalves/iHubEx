@@ -20,5 +20,5 @@ public class ProductDto {
 
     private Date creationDate;
 
-    private Boolean deleted;
+    private Boolean active;
 }

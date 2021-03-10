@@ -14,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name="orderModel")
+@EqualsAndHashCode
 //Next Annotation allow to just show Orders delected = false on findAll method
 //@Where(clause = "deleted = false")
 public class OrderModel {
@@ -38,6 +39,6 @@ public class OrderModel {
 
     private Date creationDate;
 
-    private Boolean deleted;
+    private Boolean active;
 
 }

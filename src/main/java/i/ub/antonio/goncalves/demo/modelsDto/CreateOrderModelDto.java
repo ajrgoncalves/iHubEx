@@ -23,7 +23,7 @@ public class CreateOrderModelDto {
 
     private Date creationDate;
 
-    private Boolean deleted;
+    private Boolean active;
 
     private List<Long> productIds;
 }

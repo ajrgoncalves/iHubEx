@@ -43,4 +43,9 @@ public class ProductController {
     public void recover(@PathVariable Long id) throws NotFoundException {
         productService.recover(id);
     }
+
+    @PostMapping(path = "update")
+    public void update(@RequestBody ProductDto productDto) throws NotFoundException {
+        productService.update(productDto);
+    }
 }
