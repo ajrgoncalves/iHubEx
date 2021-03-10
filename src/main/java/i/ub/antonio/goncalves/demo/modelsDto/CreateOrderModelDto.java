@@ -1,11 +1,11 @@
 package i.ub.antonio.goncalves.demo.modelsDto;
 
-import lombok.*;
+        import lombok.*;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Date;
-import java.util.List;
+        import javax.persistence.GeneratedValue;
+        import javax.persistence.Id;
+        import java.util.Date;
+        import java.util.List;
 
 @Builder
 @Getter
@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class OrderModelDto {
+public class CreateOrderModelDto {
 
     @Id
     @GeneratedValue
@@ -25,5 +25,5 @@ public class OrderModelDto {
 
     private Boolean deleted;
 
-    private List<ProductDto> productsDtos;
+    private List<Long> productIds;
 }

@@ -2,6 +2,7 @@ package i.ub.antonio.goncalves.demo.mappers;
 
 import i.ub.antonio.goncalves.demo.models.OrderModel;
 import i.ub.antonio.goncalves.demo.models.Product;
+import i.ub.antonio.goncalves.demo.modelsDto.CreateOrderModelDto;
 import i.ub.antonio.goncalves.demo.modelsDto.OrderModelDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ public class OrderMapper {
                 .creationDate(orderModel.getCreationDate())
                 .buyerEmail(orderModel.getBuyerEmail())
                 .deleted(orderModel.getDeleted())
-                .productIds(orderModel.getProducts().stream().map(product -> product.getId()).collect(Collectors.toList()))
+                .productsDtos(orderModel.getProducts().stream().map(product -> productMapper.mapperToDto(product)).collect(Collectors.toList()))
                 .build();
     }
 
@@ -31,9 +32,27 @@ public class OrderMapper {
                 .creationDate(orderModelDto.getCreationDate())
                 .buyerEmail(orderModelDto.getBuyerEmail())
                 .deleted(orderModelDto.getDeleted())
-//                .products(products)
-//                .products(orderModelDto.getProductDtos().stream()
-//                        .map(productDto -> productMapper.mapperFromDto(productDto)).collect(Collectors.toList()))
                 .build();
     }
+
+    //This will be used only on create calls
+    public CreateOrderModelDto mapperToDtoCreate(OrderModel orderModel) {
+        return CreateOrderModelDto.builder()
+                .id(orderModel.getId())
+                .creationDate(orderModel.getCreationDate())
+                .buyerEmail(orderModel.getBuyerEmail())
+                .deleted(orderModel.getDeleted())
+                .productIds(orderModel.getProducts().stream().map(product -> product.getId()).collect(Collectors.toList()))
+                .build();
+    }
+
+    public OrderModel mapperFromDtoCreate(CreateOrderModelDto createOrderModelDto) {
+        return OrderModel.builder()
+                .id(createOrderModelDto.getId())
+                .creationDate(createOrderModelDto.getCreationDate())
+                .buyerEmail(createOrderModelDto.getBuyerEmail())
+                .deleted(createOrderModelDto.getDeleted())
+                .build();
+    }
+
 }

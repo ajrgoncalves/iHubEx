@@ -3,6 +3,7 @@ package i.ub.antonio.goncalves.demo.services;
 import i.ub.antonio.goncalves.demo.mappers.OrderMapper;
 import i.ub.antonio.goncalves.demo.mappers.ProductMapper;
 import i.ub.antonio.goncalves.demo.models.Product;
+import i.ub.antonio.goncalves.demo.modelsDto.CreateOrderModelDto;
 import i.ub.antonio.goncalves.demo.modelsDto.ProductDto;
 import i.ub.antonio.goncalves.demo.repositories.OrderRepository;
 import i.ub.antonio.goncalves.demo.models.OrderModel;
@@ -56,18 +57,17 @@ public class OrderService {
     }
 
 
-    public OrderModelDto save(OrderModelDto orderModelDto) {
-        //Need to map orderModel, save, and then convert back to a Dto
+    public CreateOrderModelDto save(CreateOrderModelDto createOrderModelDto) {
 
-        OrderModel orderModel = orderMapper.mapperFromDto(orderModelDto);
+        OrderModel orderModel = orderMapper.mapperFromDtoCreate(createOrderModelDto);
 
-        orderModelDto.getProductIds().forEach(productId ->orderModel.getProducts().add(productRepository.findById(productId).orElseThrow(
-                () -> new org.webjars.NotFoundException("An error occured when adding product to order")
+        createOrderModelDto.getProductIds().forEach(productId ->orderModel.getProducts().add(productRepository.findById(productId).orElseThrow(
+                () -> new org.webjars.NotFoundException("An error occurred when adding product to order")
         )));
 
         orderRepository.save(orderModel);
 
-        return orderMapper.mapperToDto(orderModel);
+        return orderMapper.mapperToDtoCreate(orderModel);
     }
 
     public void delete(Long id) throws NotFoundException {

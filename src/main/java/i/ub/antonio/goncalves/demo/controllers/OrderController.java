@@ -1,5 +1,6 @@
 package i.ub.antonio.goncalves.demo.controllers;
 
+import i.ub.antonio.goncalves.demo.modelsDto.CreateOrderModelDto;
 import i.ub.antonio.goncalves.demo.modelsDto.OrderModelDto;
 import i.ub.antonio.goncalves.demo.services.OrderService;
 import javassist.NotFoundException;
@@ -31,8 +32,8 @@ public class OrderController {
     }
 
     @PostMapping()
-    private OrderModelDto addOrder(@RequestBody OrderModelDto orderModelDto){
-        return orderService.save(orderModelDto);
+    private CreateOrderModelDto addOrder(@RequestBody CreateOrderModelDto createOrderModelDto){
+        return orderService.save(createOrderModelDto);
     }
 
     @DeleteMapping("/delete/{id}")
