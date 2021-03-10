@@ -20,7 +20,5 @@ public class ProductDto {
 
     private Date creationDate;
 
-    private Long orderModelId;
-
     private Boolean deleted;
 }

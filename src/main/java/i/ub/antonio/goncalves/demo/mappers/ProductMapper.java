@@ -13,18 +13,18 @@ public class ProductMapper {
                 .id(product.getId())
                 .creationDate(product.getCreationDate())
                 .name(product.getName())
-                .orderModelId(product.getOrderModel().getId())
                 .deleted(product.getDeleted())
+                .price(product.getPrice())
                 .build();
     }
 
-    public Product mapperFromDto(ProductDto productDto, OrderModel orderModel) {
+    public Product mapperFromDto(ProductDto productDto) {
         return Product.builder()
                 .id(productDto.getId())
                 .creationDate(productDto.getCreationDate())
                 .name(productDto.getName())
-                .orderModel(orderModel)
                 .deleted(productDto.getDeleted())
+                .price(productDto.getPrice())
                 .build();
     }
 }

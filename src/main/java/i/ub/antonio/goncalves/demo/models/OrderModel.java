@@ -3,7 +3,9 @@ package i.ub.antonio.goncalves.demo.models;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 @Getter
@@ -21,8 +23,16 @@ public class OrderModel {
     @Column(name = "id")
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "orderModel")
-    private List<Product> products;
+    @ManyToMany
+    @JoinTable(
+            name="ORDERMODEL_PRODUCT",
+            joinColumns = @JoinColumn(
+                    name = "orderModel_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "product_id", referencedColumnName = "id")
+    )
+    @Builder.Default
+    private Set<Product> products = new HashSet<>();
 
     private String buyerEmail;
 

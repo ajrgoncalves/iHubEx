@@ -42,12 +42,10 @@ public class ProductService {
                 .map(product -> productMapper.mapperToDto(product)).collect(Collectors.toList());
     }
 
-    public ProductDto save(ProductDto productDto) throws NotFoundException{
-
-        OrderModel orderModelId = orderService.getOrderModelById(productDto.getOrderModelId());
+    public ProductDto save(ProductDto productDto) {
 
         Product product  = productRepository
-                .save(productMapper.mapperFromDto(productDto, orderModelId));
+                .save(productMapper.mapperFromDto(productDto));
 
         return productMapper.mapperToDto(product);
     }
@@ -55,6 +53,12 @@ public class ProductService {
     public void delete(Long id) throws NotFoundException {
         Product product = productRepository.findById(id).get();
         product.setDeleted(true);
+        productRepository.save(product);
+    }
+
+    public void recover(Long id) throws NotFoundException {
+        Product product = productRepository.findById(id).get();
+        product.setDeleted(false);
         productRepository.save(product);
     }
 }

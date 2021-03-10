@@ -39,4 +39,8 @@ public class ProductController {
     public void delete(@PathVariable Long id) throws NotFoundException {
         productService.delete(id);
     }
+    @PostMapping(path = "recover/{id}")
+    public void recover(@PathVariable Long id) throws NotFoundException {
+        productService.recover(id);
+    }
 }

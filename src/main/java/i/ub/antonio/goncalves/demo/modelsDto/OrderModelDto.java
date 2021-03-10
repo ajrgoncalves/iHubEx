@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.List;
 
 @Builder
 @Getter
@@ -23,4 +24,6 @@ public class OrderModelDto {
     private Date creationDate;
 
     private Boolean deleted;
+
+    private List<Long> productIds;
 }

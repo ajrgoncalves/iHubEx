@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Builder
@@ -24,9 +27,8 @@ public class Product {
 
     private Date creationDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "orderModel_id")
-    private OrderModel orderModel;
+    @ManyToMany(mappedBy = "products")
+    private Set<OrderModel> orders = new HashSet<>();
 
     private Boolean deleted;
 }

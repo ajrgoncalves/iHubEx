@@ -40,5 +40,10 @@ public class OrderController {
         orderService.delete(id);
     }
 
+    @PostMapping("/recover/{id}")
+    public void recover(@PathVariable Long id) throws NotFoundException {
+        orderService.recover(id);
+    }
+
     //TODO: Retrieving all orders within a given time period
 }
