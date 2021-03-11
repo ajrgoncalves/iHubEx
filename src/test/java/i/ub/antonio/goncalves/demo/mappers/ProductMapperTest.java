@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -30,7 +28,7 @@ public class ProductMapperTest {
                 .price(10)
                 .active(true)
                 .name("Product 1")
-                .creationDate(new Date())
+                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
                 .build();
 
 
@@ -38,7 +36,7 @@ public class ProductMapperTest {
                 .price(10)
                 .active(true)
                 .name("Product 1")
-                .creationDate(new Date())
+                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
                 .build();
     }
 

@@ -63,7 +63,7 @@ public class OrderService {
     public void delete(Long id) throws NotFoundException {
         OrderModel orderModel = orderRepository.findById(id)
                 .orElseThrow(() -> new org.webjars.NotFoundException("Order not found for id: %d" + id));
-        orderModel.setActive(true);
+        orderModel.setActive(false);
         orderRepository.save(orderModel);
 //        orderRepository.deleteById(id);
     }
@@ -71,7 +71,7 @@ public class OrderService {
     public void recover(Long id) throws NotFoundException {
         OrderModel orderModel = orderRepository.findById(id)
                 .orElseThrow(() -> new org.webjars.NotFoundException("Order not found for id: %d" + id));
-        orderModel.setActive(false);
+        orderModel.setActive(true);
         orderRepository.save(orderModel);
     }
 }

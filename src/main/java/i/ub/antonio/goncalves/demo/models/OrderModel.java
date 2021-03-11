@@ -1,10 +1,12 @@
 package i.ub.antonio.goncalves.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Builder
@@ -24,7 +26,7 @@ public class OrderModel {
     @Column(name = "id")
     private Long id;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name="ORDERMODEL_PRODUCT",
             joinColumns = @JoinColumn(
@@ -33,6 +35,9 @@ public class OrderModel {
                     name = "product_id", referencedColumnName = "id")
     )
     @Builder.Default
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<Product> products = new HashSet<>();
 
     private String buyerEmail;

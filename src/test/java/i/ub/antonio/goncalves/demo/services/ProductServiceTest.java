@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
@@ -50,12 +47,12 @@ public class ProductServiceTest {
                 .price(10)
                 .active(true)
                 .name("Product 1")
-                .creationDate(new Date())
+                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
                 .build();
         productTwo = Product.builder()
                 .price(55)
                 .name("Product 2")
-                .creationDate(new Date())
+                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
                 .active(false)
                 .build();
 
@@ -63,13 +60,13 @@ public class ProductServiceTest {
                 .price(10)
                 .active(true)
                 .name("Product 1")
-                .creationDate(new Date())
+                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
                 .build();
         productTwoDto = ProductDto.builder()
                 .price(55)
                 .active(false)
                 .name("Product 2")
-                .creationDate(new Date())
+                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
                 .build();
 
         products.add(productOneDto);

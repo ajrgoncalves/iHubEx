@@ -11,9 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,25 +40,25 @@ class OrderMapperTest {
                 .price(10)
                 .active(true)
                 .name("Product 1")
-                .creationDate(new Date())
+                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
                 .build();
         productTwo = Product.builder()
                 .price(55)
                 .name("Product 2")
-                .creationDate(new Date())
+                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
                 .active(false)
                 .build();
 
         orderModel = OrderModel.builder()
                 .buyerEmail("email@teste.pt")
                 .active(true)
-                .creationDate(new Date())
+                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
                 .build();
 
         orderModelDto = OrderModelDto.builder()
                 .buyerEmail("email@teste.pt")
                 .active(true)
-                .creationDate(new Date())
+                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
                 .build();
 
         createOrderModelDto = CreateOrderModelDto.builder()

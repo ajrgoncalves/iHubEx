@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -28,7 +27,7 @@ public class Product {
 
     private Date creationDate;
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY)
     private Set<OrderModel> orders = new HashSet<>();
 
     private Boolean active;

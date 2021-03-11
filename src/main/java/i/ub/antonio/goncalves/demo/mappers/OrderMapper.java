@@ -15,7 +15,7 @@ public class OrderMapper {
     private ProductMapper productMapper;
 
     public OrderModelDto mapperToDto(OrderModel orderModel) {
-        Integer totalPrice = orderModel.getProducts().stream().map(product -> product.getPrice()).reduce(Integer::sum).get();
+//        Integer totalPrice = orderModel.getProducts().stream().map(product -> product.getPrice()).reduce(Integer::sum).get();
 
         return OrderModelDto.builder()
                 .id(orderModel.getId())
@@ -23,7 +23,7 @@ public class OrderMapper {
                 .buyerEmail(orderModel.getBuyerEmail())
                 .active(orderModel.getActive())
                 .productsDtos(orderModel.getProducts().stream().map(product -> productMapper.mapperToDto(product)).collect(Collectors.toList()))
-                .totalPrice(totalPrice)
+//                .totalPrice(totalPrice)
                 .build();
     }
 
