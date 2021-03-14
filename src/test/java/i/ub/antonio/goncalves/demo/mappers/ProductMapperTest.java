@@ -20,15 +20,18 @@ public class ProductMapperTest {
 
     private ProductDto productOneDto;
 
+    private Date date;
 
     @BeforeEach
     public void setUp() {
+
+        date = new GregorianCalendar(2021, Calendar.MARCH, 11).getTime();
 
         productOne = Product.builder()
                 .price(10)
                 .active(true)
                 .name("Product 1")
-                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
+                .creationDate(date)
                 .build();
 
 
@@ -36,7 +39,7 @@ public class ProductMapperTest {
                 .price(10)
                 .active(true)
                 .name("Product 1")
-                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
+                .creationDate(date)
                 .build();
     }
 

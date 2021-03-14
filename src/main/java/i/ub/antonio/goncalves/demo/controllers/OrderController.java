@@ -32,7 +32,7 @@ public class OrderController {
     }
 
     @PostMapping()
-    private CreateOrderModelDto addOrder(@RequestBody CreateOrderModelDto createOrderModelDto){
+    private OrderModelDto addOrder(@RequestBody CreateOrderModelDto createOrderModelDto){
         return orderService.save(createOrderModelDto);
     }
 

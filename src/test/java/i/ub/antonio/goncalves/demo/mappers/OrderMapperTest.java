@@ -33,38 +33,42 @@ class OrderMapperTest {
 
     private Product productTwo;
 
+    private Date date;
+
     @BeforeEach
     public void setUp() {
+
+        date = new GregorianCalendar(2021, Calendar.MARCH, 11).getTime();
 
         productOne = Product.builder()
                 .price(10)
                 .active(true)
                 .name("Product 1")
-                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
+                .creationDate(date)
                 .build();
         productTwo = Product.builder()
                 .price(55)
                 .name("Product 2")
-                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
+                .creationDate(date)
                 .active(false)
                 .build();
 
         orderModel = OrderModel.builder()
                 .buyerEmail("email@teste.pt")
                 .active(true)
-                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
+                .creationDate(date)
                 .build();
 
         orderModelDto = OrderModelDto.builder()
                 .buyerEmail("email@teste.pt")
                 .active(true)
-                .creationDate(new GregorianCalendar(2021, Calendar.MARCH, 11).getTime())
+                .creationDate(date)
                 .build();
 
         createOrderModelDto = CreateOrderModelDto.builder()
                 .buyerEmail("email@teste.pt")
                 .active(true)
-                .creationDate(new Date())
+                .creationDate(date)
                 .build();
     }
 

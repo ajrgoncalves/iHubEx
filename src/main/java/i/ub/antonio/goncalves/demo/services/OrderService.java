@@ -46,7 +46,7 @@ public class OrderService {
     }
 
 
-    public CreateOrderModelDto save(CreateOrderModelDto createOrderModelDto) {
+    public OrderModelDto save(CreateOrderModelDto createOrderModelDto) {
 
         OrderModel orderModel = orderMapper.mapperFromDtoCreate(createOrderModelDto);
 
@@ -57,7 +57,7 @@ public class OrderService {
 
         orderRepository.save(orderModel);
 
-        return orderMapper.mapperToDtoCreate(orderModel);
+        return orderMapper.mapperToDto(orderModel);
     }
 
     public void delete(Long id) throws NotFoundException {
